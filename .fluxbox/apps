@@ -1,0 +1,23 @@
+[startup] {eval `cat ~/.fehbg`}
+[startup] {ck-launch-session dbus-launch}
+[startup] {~/.conky/conky_start}
+[startup] {fetchmail -d 30}
+[startup] {xscreensaver}
+[startup] {tint2 -c /home/syslac/.tint2rc}
+[startup] {volwheel}
+[startup] {wicd-kde}
+
+[app] (aterm-xterm)
+[sticky] {yes}
+[Hidden] {yes}
+[Layer] {12}
+[Dimensions] {150 200}
+[position] {1100 600}
+[Deco] {0x1c0}
+[end]
+
+
+[app] (aterm)
+[sticky] {yes}
+[end]
+

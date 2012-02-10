@@ -1,0 +1,50 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Fluxbox)
+
+	[submenu] (System)
+		[exec] (Screen) {gnome-terminal}
+		[exec] (Package Management) {gksu "synaptic"}
+		[exec] (Dolphin) {dolphin}
+	[end]
+
+	[submenu] (Network)
+		[exec] (Iceweasel) {iceweasel}
+		[exec] (Ktorrent) {ktorrent}
+		[exec] (Mutt) {aterm  +sb -e mutt -Z}
+	[end]
+
+	[submenu] (Math)
+		[exec] (QtOctave) {qtoctave}
+		[exec] (Octave) {aterm +sb -e octave}
+		[exec] (dc) {aterm +sb -e dc}
+	[end]
+
+	[submenu] (Games)
+		[exec] (Xmoto) {xmoto}
+		[exec] (Wesnoth) {wesnoth}
+		[exec] (Nethack) {gnome-terminal -e /home/syslac/public_html/nh_stats/nh_script.sh}
+		[exec] (Crawl) {gnome-terminal -e crawl}
+        [exec] (Fortune) {sh -c 'while /usr/games/fortune | col -x | xmessage -center -buttons OK:1,Another:0 -default OK -file - ; do :; done'}
+	[end]
+
+	[submenu] (Media)
+		[exec] (Gimp) {gimp}
+		[exec] (Quodlibet) {gmusicbrowser}
+		[exec] (Xine) {xine}
+		[exec] (gPicView) {gpicview}
+		[exec] (okular) {okular}
+	[end]
+
+	[submenu] (Fluxbox-defaults)
+	[include] (/etc/X11/fluxbox/fluxbox-menu)
+	[end]
+
+	[restart] (Restart)
+	[exit] (Exit)
+
+[end]

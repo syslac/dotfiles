@@ -1,0 +1,68 @@
+! fluxbox-update_configs added '(workspace=[current])' to (Next|Prev)(Window|Group)
+! check lines marked by 'FBCV13' if they are correctly updated
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Mouse1 :MacroCmd {Focus} {Raise} {ActivateTab}
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Move1 :StartMoving
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+OnWindowBorder Move1 :StartMoving
+
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Mouse2 :StartTabbing
+
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Double Mouse1 :Shade
+OnTitlebar Mouse3 :WindowMenu
+
+!mouse actions added by fluxbox-update_configs
+OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
+
+OnDesktop Mouse1 :HideMenus
+OnDesktop Mouse2 :WorkspaceMenu
+OnDesktop Mouse3 :RootMenu
+OnDesktop Mouse4 :NextWorkspace
+OnDesktop Mouse5 :PrevWorkspace
+
+OnDesktop Control Mouse3 :WindowMenu
+
+OnDesktop Mod1 m Shift m :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
+Mod4 m :Minimize
+Shift Mod4 m :Deiconify LastWorkspace
+
+Mod1 Tab :NextWindow (workspace=[current]) !! FBCV13 !!
+Mod1 Shift Tab :PrevWindow (workspace=[current]) !! FBCV13 !!
+Control F1 :Workspace 1
+Control F1 :Workspace 1
+Control Mod4 Right :NextWorkspace
+Control Mod4 Left :PrevWorkspace
+Mod1 F2 :ExecCommand grun 
+Mod1 F3 :ExecCommand krunner
+Mod1 F4 :Workspace 4
+Mod1 F5 :Workspace 5
+Mod1 F6 :Workspace 6
+Mod1 F7 :Workspace 7
+Mod1 F8 :Workspace 8
+!Mod1 F9 :ExecCommand echo "n" >> /home/syslac/src/perl/audio/.server.txt
+!Mod1 F10 :ExecCommand echo "p" >> /home/syslac/src/perl/audio/.server.txt
+Mod1 F9 :ExecCommand gmusicbrowser -cmd NextSong
+Mod1 F10 :ExecCommand gmusicbrowser -cmd PlayPause
+Mod1 F11 :Workspace 11
+Mod1 F12 :Workspace 12
+
+None XF86AudioLowerVolume :ExecCommand amixer -q set Master 5%- unmute
+None XF86AudioMute :ExecCommand amixer -q set Front toggle
+None XF86AudioRaiseVolume :ExecCommand amixer -q set Master 5%+ unmute
+
+None XF86MonBrightnessDown :ExecCommand /etc/acpi/video_brightessdown.sh
+None XF86MonBrightnessUp :ExecCommand /etc/acpi/video_brightessup.sh
+
+None XF86AudioPrev :ExecCommand mocp -r
+None XF86AudioNext :ExecCommand mocp -f
+
+Mod4 p :ExecCommand scrot '%Y%m%d-%H%M%S.png'
+
+
+
+
