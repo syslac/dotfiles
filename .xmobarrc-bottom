@@ -1,0 +1,15 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = BottomW L 100
+       , commands = [ Run Weather "LIPS" ["-t"," <tempC>C","-L","64","-H","77","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Cpu [] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "/home/syslac/bin/gmusic-np.sh" [] "" 10
+   --                   , Run Artist ["cat ~/.config/gmusicbrowser/nowplaying.info | head -n 2 | tail -n 1 | cut -d "=" -f 2", "||", "echo", "Nothing"] "" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " Playing: <fc=#ffff00>%/home/syslac/bin/gmusic-np.sh%</fc>}{ %cpu% | %memory% * %swap%  | %LIPS%"
+       }

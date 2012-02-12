@@ -77,7 +77,7 @@ main = do
         , startupHook = startup
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppTitle = xmobarColor "green" "" . shorten 150
                         }
         , modMask = mod1Mask     -- Rebind Mod to the Alt key
         , workspaces          = myWorkspaces
@@ -108,3 +108,5 @@ startup = do
     spawn "/home/syslac/.xmonad/autostart/wicd"
     spawn "/home/syslac/.xmonad/autostart/fetchmail"
     spawn "/home/syslac/.xmonad/autostart/ssaver"
+    spawn "/home/syslac/.xmonad/autostart/lux"
+    spawn "/home/syslac/.xmonad/autostart/dbox"
