@@ -40,12 +40,12 @@ import XMonad.Layout.TwoPane
 
 myManageHook = composeAll . concat $
     [ 
-      [ className =? "Gimp"      --> doFloat],
       [ className =? "Xfce4-notifyd"      --> notFocus],
       [ className =? b --> viewShift "2:web"    | b <- myClassWebShifts],
       [ className =? c --> viewShift "4:read"    | c <- myClassReadShifts],
       [ className =? d --> viewShift "3:dev"    | d <- myClassDevShifts],
-      [ className =? e --> viewShift "5:media"    | e <- myClassMediaShifts]
+      [ className =? e --> viewShift "5:media"    | e <- myClassMediaShifts],
+      [ className =? f --> viewShift "6:gimp"    | f <- myClassGimpShifts]
     ]
     where
       notFocus            = doF W.focusDown 
@@ -54,6 +54,7 @@ myManageHook = composeAll . concat $
       myClassReadShifts    = ["Okular", "Xpdf"]
       myClassDevShifts    = ["Gvim", "Virt-manager", "Octave"]
       myClassMediaShifts    = ["Gmusicbrowser", "Mocp", "Vlc", "Xine"]
+      myClassGimpShifts    = ["Gimp"]
 
 myWorkspaces    = ["1:main","2:web","3:dev","4:read","5:media","6","7","8","9"]
  
@@ -83,6 +84,7 @@ main = do
         , workspaces          = myWorkspaces
         } `additionalKeys`
         [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+        , ((mod1Mask .|. shiftMask, xK_s), spawn "sudo /usr/sbin/s2ram -f")
         , ((mod1Mask .|. shiftMask, xK_Return), spawn "gnome-terminal -e screen")
         , ((mod4Mask, xK_t), spawn "gnome-terminal -e screen")
         , ((mod4Mask, xK_w), spawn "iceweasel")

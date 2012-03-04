@@ -1,6 +1,7 @@
 "Comment here
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 colorscheme golden		"Fuck yeah! :D
 "colorscheme hemisu
 "colorscheme camo
@@ -50,6 +51,9 @@ set smartcase
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+set spelllang=it_it
+nnoremap _s :set spell!
 
 "folding settings
 set foldenable
