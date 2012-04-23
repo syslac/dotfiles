@@ -71,6 +71,9 @@ map <S-Space> <C-Y>
 map <Space> <C-E>
 map <F3> :NERDTreeToggle<CR><CR>
 map <leader>q :Bclose
+map U :redo<CR>
+map j jzz 
+map k kzz
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
