@@ -24,7 +24,7 @@ colorscheme golden		"Fuck yeah! :D
 "colorscheme zellner
 set number
 set relativenumber
-set encoding=iso-8859-1
+set encoding=utf8
 set autochdir
 set directory=~/.vim/swap/
 set wildmenu
@@ -89,6 +89,10 @@ map <k2> <C-U>
 map <k1> <C-D>
 imap <k2> <C-O><C-U>
 imap <k1> <C-O><C-D>
+
+map _y "*y
+map _yy "*yy
+map _p "*p
 
 map <F9> :w!<CR>:!aspell check %<CR>:e! %<CR>
 map _d I\begin{definition}{}<CR>\end{definition}<CR><Esc>kk/{}/<CR>a

@@ -12,7 +12,7 @@ git_custom_status() {
 }
 
 function workdir {
-	echo `basename $(pwd)`
+	echo `basename "$(pwd)"`
 }
 
 function charge {
@@ -24,4 +24,4 @@ function prompt_char {
     echo '$'
 }
 
-PROMPT='%{$terminfo[bold]$fg[blue]%}%n@%m (%h) %{$reset_color%} %{$terminfo[bold]$fg[green]%}[%T - $(charge)] $(workdir) %{$reset_color%} $(git_custom_status)$(prompt_char) '
+PROMPT='%{$terminfo[bold]$fg[blue]%}%n@%m (%h) %{$reset_color%} %{$terminfo[bold]$fg[green]%}[%T - $(charge)] $(workdir)%{$reset_color%} $(git_custom_status)$(prompt_char) '
