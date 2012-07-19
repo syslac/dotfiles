@@ -105,3 +105,4 @@ if has("gui_running")
 	set guifont=Monospace\ 12
 endif
 
+let g:slime_target = "tmux"
