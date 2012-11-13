@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="syslac"
+ZSH_THEME="bira"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -36,12 +36,13 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+source ~/perl5/perlbrew/etc/bashrc
 export PATH=/home/syslac/bin:/home/syslac/perl5/bin:/home/syslac/bin:/usr/local/bin:/usr/bin:/bin:/usr/games
 export PERL_LOCAL_LIB_ROOT="/home/syslac/perl5";
 export PERL_MB_OPT="--install_base /home/syslac/perl5";
 export PERL_MM_OPT="INSTALL_BASE=/home/syslac/perl5";
 export PERL5LIB="/home/syslac/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/syslac/perl5/lib/perl5";
-export PATH="/home/syslac/perl5/bin:$PATH";
+export PATH="/home/syslac/perl5/bin:/home/syslac/.cabal/bin:$PATH";
 
 #utf8
 
@@ -49,3 +50,5 @@ export LANG=it_IT.UTF-8
 export LESSCHARSET=utf-8
 export PERL_UTF8_LOCALE=1 PERL_UNICODE=AS
 
+# colors for tmux
+alias tmux="TERM=screen-256color-bce tmux"

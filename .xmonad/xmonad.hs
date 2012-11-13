@@ -51,7 +51,7 @@ myManageHook = composeAll . concat $
       notFocus            = doF W.focusDown 
       viewShift           = doF . liftM2 (.) W.greedyView W.shift
       myClassWebShifts    = ["Firefox-bin", "Firefox", "Iceweasel"]
-      myClassReadShifts    = ["Okular", "Xpdf"]
+      myClassReadShifts    = ["Okular", "Xpdf","Evince","Zathura"]
       myClassDevShifts    = ["Gvim", "Virt-manager", "Octave"]
       myClassMediaShifts    = ["Gmusicbrowser", "Mocp", "Vlc", "Xine"]
       myClassGimpShifts    = ["Gimp"]
@@ -70,7 +70,8 @@ myLayout = avoidStruts $ layoutHints $ onWorkspace "4:read" Full $ onWorkspace "
 
 main = do
     xmproc <- spawnPipe "xmobar /home/syslac/.xmobarrc"
-    xmproc2 <- spawn "xmobar /home/syslac/.xmobarrc-bottom"
+--    xmproc <- spawnPipe "taffybar /home/syslac/.cabal/share/taffybar-0.2.1/taffybar.rc"
+--    xmproc2 <- spawn "xmobar /home/syslac/.xmobarrc-bottom"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
                         <+> manageHook defaultConfig
@@ -107,8 +108,8 @@ startup = do
     spawn "/home/syslac/.xmonad/autostart/feh"
     spawn "/home/syslac/.xmonad/autostart/trayer"
     spawn "/home/syslac/.xmonad/autostart/vol"
-    spawn "/home/syslac/.xmonad/autostart/wicd"
-    spawn "/home/syslac/.xmonad/autostart/fetchmail"
+    spawn "/home/syslac/.xmonad/autostart/nm"
     spawn "/home/syslac/.xmonad/autostart/ssaver"
     spawn "/home/syslac/.xmonad/autostart/lux"
     spawn "/home/syslac/.xmonad/autostart/dbox"
+    spawn "/home/syslac/.xmonad/autostart/fbattery"

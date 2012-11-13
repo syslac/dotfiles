@@ -2,7 +2,11 @@
 "call pathogen#helptags()
 "call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
-colorscheme golden		"Fuck yeah! :D
+syntax enable
+"set background=dark
+"colorscheme golden		"Fuck yeah! :D
+let g:solarized_termtrans = 1
+colorscheme solarized
 "colorscheme hemisu
 "colorscheme camo
 "colorscheme blue		"Horrible
@@ -29,19 +33,19 @@ set autochdir
 set directory=~/.vim/swap/
 set wildmenu
 set wildmode=full
-syntax on
+"syntax on
 
 ""if &t_Co > 2 || has("gui_running")
 "syntax on
 "colorscheme hemisu
-"set background=dark
+set background=dark
 "endif
 
-set cursorcolumn
-set cursorline
+"set cursorcolumn
+"set cursorline
 set laststatus=2
 set report=0
-set ruler
+"set ruler
 set showcmd
 set showmatch
 
@@ -106,3 +110,26 @@ if has("gui_running")
 endif
 
 let g:slime_target = "tmux"
+
+function! PlaySound()
+  silent! exec '!play /home/syslac/.vim/type.wav >& /dev/null &'
+endfunction
+"autocmd CursorMovedI * call PlaySound()
+
+command! Prose inoremap <buffer> . .<C-G>u|
+            \ inoremap <buffer> ! !<C-G>u|
+            \ inoremap <buffer> ? ?<C-G>u|
+            \ setlocal spell spelllang=it,en
+            \     nolist nowrap tw=74 fo=t1 nonu|
+            \ augroup PROSE|
+            \   autocmd InsertEnter <buffer> set fo+=a|
+            \   autocmd InsertLeave <buffer> set fo-=a|
+            \ augroup END
+
+command! Code silent! iunmap <buffer> .|
+            \ silent! iunmap <buffer> !|
+            \ silent! iunmap <buffer> ?|
+            \ setlocal nospell list nowrap
+            \     tw=74 fo=cqr1 showbreak=… nu|
+            \ silent! autocmd! PROSE * <buffer>
+nnoremap <leader>s ea<C-X><C-S>
