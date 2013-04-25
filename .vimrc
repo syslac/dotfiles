@@ -3,9 +3,10 @@
 "call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
 syntax enable
-"set background=dark
+set background=dark
 "colorscheme golden		"Fuck yeah! :D
 let g:solarized_termtrans = 1
+"set background=dark
 colorscheme solarized
 "colorscheme hemisu
 "colorscheme camo
@@ -38,23 +39,28 @@ set wildmode=full
 ""if &t_Co > 2 || has("gui_running")
 "syntax on
 "colorscheme hemisu
-set background=dark
 "endif
 
-"set cursorcolumn
-"set cursorline
+set cursorcolumn
+set cursorline
 set laststatus=2
 set report=0
-"set ruler
+set ruler
 set showcmd
 set showmatch
+set backspace=indent,eol,start
+set autoread
 
 set ignorecase
 set infercase
 set smartcase
+set autoindent
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set expandtab
+
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 set spelllang=it_it
 nnoremap _s :set spell!
@@ -65,6 +71,7 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set foldlevel=100       
 
+filetype plugin indent on
 " Octave Syntax
 augroup filetypedetect
      au! BufRead,BufNewFile *.m setfiletype octave
@@ -94,6 +101,11 @@ map <k1> <C-D>
 imap <k2> <C-O><C-U>
 imap <k1> <C-O><C-D>
 
+" Or better yet, use vim motions
+autocmd VimEnter,BufNewFile,BufReadPost * call HardMode()
+nnoremap <leader>h <Esc>:call EasyMode()<CR>
+nnoremap <leader>H <Esc>:call HardMode()<CR>
+
 map _y "*y
 map _yy "*yy
 map _p "*p
@@ -111,15 +123,20 @@ endif
 
 let g:slime_target = "tmux"
 
+"Typewriter sound - disabled by default
 function! PlaySound()
   silent! exec '!play /home/syslac/.vim/type.wav >& /dev/null &'
 endfunction
 "autocmd CursorMovedI * call PlaySound()
 
+" >80 columns line warning
+map <leader>o :highlight OverLength ctermbg=red ctermfg=white guibg=#592929 <CR> :match OverLength /\%81v.\+/<CR>
+
+
 command! Prose inoremap <buffer> . .<C-G>u|
             \ inoremap <buffer> ! !<C-G>u|
             \ inoremap <buffer> ? ?<C-G>u|
-            \ setlocal spell spelllang=it,en
+            \ setlocal spell spelllang=it
             \     nolist nowrap tw=74 fo=t1 nonu|
             \ augroup PROSE|
             \   autocmd InsertEnter <buffer> set fo+=a|
