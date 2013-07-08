@@ -1,5 +1,5 @@
 Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
-       , bgColor = "black"
+       , bgColor = "#333333"
        , fgColor = "grey"
        , position = TopW L 90
        , commands = [ Run Weather "LIPS" ["-t"," <tempC>C","-L","64","-H","77","--normal","green","--high","red","--low","lightblue"] 36000

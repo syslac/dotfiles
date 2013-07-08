@@ -1,9 +1,11 @@
 "Comment here
-"call pathogen#helptags()
-"call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
 syntax enable
 set background=dark
+set t_Co=256
+set ttimeoutlen=50
 "colorscheme golden		"Fuck yeah! :D
 let g:solarized_termtrans = 1
 "set background=dark
@@ -102,13 +104,15 @@ imap <k2> <C-O><C-U>
 imap <k1> <C-O><C-D>
 
 " Or better yet, use vim motions
-autocmd VimEnter,BufNewFile,BufReadPost * call HardMode()
+" autocmd VimEnter,BufNewFile,BufReadPost * call HardMode()
 nnoremap <leader>h <Esc>:call EasyMode()<CR>
 nnoremap <leader>H <Esc>:call HardMode()<CR>
 
 map _y "*y
 map _yy "*yy
 map _p "*p
+
+nnoremap <C-p> :Unite -start-insert file<CR>
 
 map <F9> :w!<CR>:!aspell check %<CR>:e! %<CR>
 map _d I\begin{definition}{}<CR>\end{definition}<CR><Esc>kk/{}/<CR>a
