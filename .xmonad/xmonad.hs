@@ -86,7 +86,7 @@ main = do
         } `additionalKeys`
         [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((mod1Mask .|. shiftMask, xK_s), spawn "sudo /usr/sbin/s2ram -f")
-        , ((mod1Mask .|. shiftMask, xK_Return), spawn "gnome-terminal -e tmux")
+        , ((mod1Mask .|. shiftMask, xK_Return), spawn "xfce4-terminal -e tmux")
         , ((mod4Mask, xK_t), spawn "gnome-terminal -e tmux")
         , ((mod4Mask, xK_w), spawn "iceweasel")
         , ((mod4Mask .|. shiftMask, xK_w), spawn "iceweasel gmail.com")
@@ -113,3 +113,4 @@ startup = do
     spawn "/home/syslac/.xmonad/autostart/lux"
     spawn "/home/syslac/.xmonad/autostart/dbox"
     spawn "/home/syslac/.xmonad/autostart/fbattery"
+    spawn "syndaemon -d"

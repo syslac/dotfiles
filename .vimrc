@@ -1,8 +1,25 @@
 "Comment here
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
+"call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#infect()
 syntax enable
+
+" Vundle config
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle "altercation/vim-colors-solarized"
+Bundle "Shougo/unite.vim"
+Bundle "scrooloose/syntastic"
+Bundle "Lokaltog/powerline"
+Bundle "Valloric/YouCompleteMe"
+
+filetype plugin indent on
+
 set background=dark
 set t_Co=256
 set ttimeoutlen=50
@@ -10,25 +27,11 @@ set ttimeoutlen=50
 let g:solarized_termtrans = 1
 "set background=dark
 colorscheme solarized
-"colorscheme hemisu
-"colorscheme camo
-"colorscheme blue		"Horrible
-"colorscheme darkblue	"Not bad, but gloomy and highlight non working
-"colorscheme default	"Similar to darkblue, but worse
-"colorscheme delek		"Too blue/red
-"colorscheme desert		"Meh...
-"colorscheme elflord
-"colorscheme evening
-"colorscheme koehler
-"colorscheme morning
-"colorscheme murphy
-"colorscheme pablo
-"colorscheme peachpuff
-"colorscheme ron
-"colorscheme shine
-"colorscheme slate
-"colorscheme torte
-"colorscheme zellner
+let g:Powerline_symbols = "fancy"
+let g:Powerline_colorscheme = "solarized256"
+
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 set number
 set relativenumber
 set encoding=utf8
@@ -53,8 +56,6 @@ set showmatch
 set backspace=indent,eol,start
 set autoread
 
-set ignorecase
-set infercase
 set smartcase
 set autoindent
 set shiftwidth=4
@@ -65,7 +66,8 @@ set expandtab
 set timeout timeoutlen=1000 ttimeoutlen=100
 
 set spelllang=it_it
-nnoremap _s :set spell!
+nnoremap _s :set spell!<CR>
+inoremap noe one
 
 "folding settings
 set foldenable
@@ -73,7 +75,6 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set foldlevel=100       
 
-filetype plugin indent on
 " Octave Syntax
 augroup filetypedetect
      au! BufRead,BufNewFile *.m setfiletype octave
@@ -120,7 +121,7 @@ map _t I\begin{theorem}{}<CR>\end{theorem}<CR><Esc>kk/{}/<CR>a
 map _o I\begin{oss}{}<CR>\end{oss}<CR><Esc>kk/{}/<CR>a
 
 if has("gui_running")
-	colorscheme golden
+	colorscheme solarized
 	set mousehide
 	set guifont=Monospace\ 12
 endif
@@ -136,6 +137,22 @@ endfunction
 " >80 columns line warning
 map <leader>o :highlight OverLength ctermbg=red ctermfg=white guibg=#592929 <CR> :match OverLength /\%81v.\+/<CR>
 
+function SelectIndent()
+  let cur_line = line(".")
+  let cur_ind = indent(cur_line)
+  let line = cur_line
+  while indent(line - 1) >= cur_ind
+    let line = line - 1
+  endw
+  exe "normal " . line . "G"
+  exe "normal V"
+  let line = cur_line
+  while indent(nextnonblank(line)) >= cur_ind
+    let line = line + 1 
+  endw
+  exe "normal " . line . "G"
+endfunction
+nnoremap vip :call SelectIndent()<CR>
 
 command! Prose inoremap <buffer> . .<C-G>u|
             \ inoremap <buffer> ! !<C-G>u|

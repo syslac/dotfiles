@@ -37,6 +37,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/perl5/perlbrew/etc/bashrc
+
 export PATH=/home/syslac/bin:/home/syslac/perl5/bin:/home/syslac/bin:/usr/local/bin:/usr/bin:/bin:/usr/games
 export PERL_LOCAL_LIB_ROOT="/home/syslac/perl5";
 export PERL_MB_OPT="--install_base /home/syslac/perl5";
