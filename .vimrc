@@ -17,6 +17,9 @@ Bundle "Shougo/unite.vim"
 Bundle "scrooloose/syntastic"
 Bundle "Lokaltog/powerline"
 Bundle "Valloric/YouCompleteMe"
+Bundle "kien/ctrlp.vim"
+Bundle "majutsushi/tagbar"
+Bundle "vim-scripts/greplace.vim"
 
 filetype plugin indent on
 
@@ -64,6 +67,14 @@ set tabstop=4
 set expandtab
 
 set timeout timeoutlen=1000 ttimeoutlen=100
+
+set tags=./tags;
+nnoremap -* :CtrlPTag<cr>
+nnoremap <silent> _* :TagbarToggle<CR>
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" To test
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 set spelllang=it_it
 nnoremap _s :set spell!<CR>
