@@ -7,6 +7,7 @@ syntax enable
 " Vundle config
 set nocompatible
 filetype off
+set clipboard=unnamed
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -26,7 +27,6 @@ filetype plugin indent on
 set background=dark
 set t_Co=256
 set ttimeoutlen=50
-"colorscheme golden		"Fuck yeah! :D
 let g:solarized_termtrans = 1
 "set background=dark
 colorscheme solarized
@@ -97,8 +97,6 @@ map <Space> <C-E>
 map <F3> :NERDTreeToggle<CR><CR>
 map <leader>q :Bclose
 map U :redo<CR>
-map j jzz 
-map k kzz
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
