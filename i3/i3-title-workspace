@@ -26,7 +26,21 @@ sub subscribe {
             my ($msg) = @_;
             #say "$ev:$msg->{'change'}";
             if ($ev eq 'window') {
+                if ($msg->{'change'} == 'title') {
+                    say "Changed window title, inspecting focus";
+                    if ($msg->{'container'}->{'focused'}) {
+                        say "Focused, continuing";
+                    }
+                    else {
+                        say "Not focused, not rerouting";
+                        return;
+                    }
+                }
                 say "Focused window $msg->{'container'}->{'name'}";
+                if ($msg->{'container'}->{'window_properties'}->{'class'} !~ /terminal/i) {
+                    say "Window not a terminal, not rerouting based on title.";
+                    return;
+                }
                 my $workspace = first { $msg->{'container'}->{'name'} =~ qr/$_/ } keys(%titles); 
                 if ($workspace) {
                     system "i3-msg move window to workspace $titles{$workspace}";
